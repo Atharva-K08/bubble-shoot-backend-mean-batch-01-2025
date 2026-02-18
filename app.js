@@ -5,13 +5,14 @@ const dotenv = require("dotenv");
 const userRouter = require("./routes/user.routes");
 const scoreRouter = require("./routes/score.routes");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const app = express();
 
+app.use(cors());
+
 dotenv.config();
-
 connect_DB();
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

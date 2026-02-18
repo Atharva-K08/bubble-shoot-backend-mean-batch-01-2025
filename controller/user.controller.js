@@ -11,6 +11,7 @@ const jwt = require("jsonwebtoken");
 module.exports.login = async (req, res) => {
   try {
     const { username, password } = req.body;
+    console.log(req.body)
     const user = await fetchSrv(username);
     if (!user) {
       res.json({
@@ -30,6 +31,7 @@ module.exports.login = async (req, res) => {
     res.json({
       message: "login successfull",
       success: true,
+      userId: user._id
     });
   } catch (err) {
     res.json({
